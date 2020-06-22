@@ -5,7 +5,7 @@ package com.itheima.tenet.three.news;
  * @Description: com.itheima.tenet.three.old.SendMessage
  ****/
 public abstract class SendMessage {
-
+// 理事替换原则 ： 创建对象用的父类，执行的时候用子类？
     public static void main(String[] args) {
         Customer commonCustomer = new CommonCustomer();
         commonCustomer.setName("王五");

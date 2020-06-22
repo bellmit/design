@@ -6,6 +6,10 @@ import java.util.Scanner;
  * @Author: http://www.itheima.com
  * @Description: com.itheima.tenet.two.old.ChartDisplay
  ****/
+
+/*
+*  开闭原则，不必修改代码，对功能进行扩展
+* */
 public class ChartDisplay {
 
     private static AbstractChart abstractChart;

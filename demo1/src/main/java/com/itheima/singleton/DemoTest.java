@@ -12,7 +12,7 @@ import java.util.List;
 public class DemoTest {
 
     //单例模式创建对象-创建10万个对象
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         //存储所有新建的对象
         List<SingleModel> array = new ArrayList<SingleModel>();
         //创建第1个对象
@@ -29,10 +29,12 @@ public class DemoTest {
         }
 
         System.out.println("单利模式占内存："+RamUsageEstimator.sizeOf(array));
+
+        System.out.println(array);
     }
 
     //非单例模式创建对象-创建10万个对象
-    public static void main1(String[] args) {
+    public static void main2(String[] args) {
         //存储所有新建的对象
         List<Cat> array = new ArrayList<Cat>();
         //创建第1个对象
@@ -49,5 +51,35 @@ public class DemoTest {
         }
 
         System.out.println("非单利模式占内存："+RamUsageEstimator.sizeOf(array));
+        System.out.println(array);
+    }
+
+    // 模拟多线程创建对象
+    //  https://juejin.im/post/5e41f86b5188254944669a75   并没有发现多创建对象？？
+    public static void main(String[] args) {
+        //存储所有新建的对象
+        List<SingleModel> array = new ArrayList<SingleModel>();
+        //创建第1个对象
+        SingleModel singleModel = SingleModel.getSingleModel();
+        array.add(singleModel);
+
+        for (int i = 0; i < 10000; i++) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    SingleModel singleModel1 = SingleModel.getSingleModel();
+                    //如果singleModel1!=singleModel，加入到array
+                    if (singleModel1 != singleModel) {
+                        array.add(singleModel1);
+                    }
+
+                }
+            };
+
+            runnable.run();
+        }
+        System.out.println("单利模式占内存："+RamUsageEstimator.sizeOf(array));
+
+        System.out.println(array);
     }
 }

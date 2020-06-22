@@ -15,6 +15,7 @@ public class SingleModel2 {
     }
 
     //3.对外提供一个方法用于获取唯一实例
+    //双重锁单例模式？？ 为什么叫双重锁
     public static SingleModel2 getSingleModel(){
         if(singleModel==null){
             synchronized (SingleModel2.class){

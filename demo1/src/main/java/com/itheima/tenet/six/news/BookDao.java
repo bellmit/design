@@ -11,7 +11,11 @@ import java.sql.ResultSet;
  * @Description: com.itheima.tenet.six.old.BookDao
  ****/
 public class BookDao  {
-
+    /*
+    *  合成复用原则： 不推荐继承（增加耦合），抽象继承没有问题，推荐合成，把需要的数据作为属性依赖
+    *
+    *
+    * */
     @Autowired
     private MySQLUtil mySQLUtil;
 
